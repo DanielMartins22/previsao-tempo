@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Tuffy:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Tuffy', sans-serif;
+    
+}
+
+body{
+    background-image: url("./assets/mary-hinton-J5BJXHvWjco-unsplash.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    position: relative;
+    z-index: 2; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 90%;
+    max-width: 460px;
+    padding: 20px;
+    margin: 20px auto;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: rgba(18, 18, 18, 0.9);
+    border-radius: 20px;
+    color: #E0E0E0;
+    text-align: left;
+
+}
+
+.input-container{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#cidade-input{
+    height: 40px;
+    width: 250px;
+    padding: 10px 15px;
+    font-size: 17px;
+    border: 1px solid #cccccc;
+    border-radius: 20px;
+    flex: 1;
+    transition: all 0.3s ease;
+    cursor: text;
+    background-color: #1e1e1e;
+    color: #aaaaaa;
+    outline: none;
+}
+
+#cidade-input::placeholder{
+    color: #aaaaaa;
+    opacity: 1;
+}
+
+#cidade-input:focus{
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.buscar-btn{
+    
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 40px;
+}
+
+.buscar-btn:hover{
+    background-color: #0056b3;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.buscar-btn:active{
+    background-color: #003f7f;
+    transform: scale(0.95);
+}
+
+.buscar-btn i{
+    font-size: 20px;
+}
+
+h1{
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #FFD700;
+    text-align: left;
+}
+
+h2{
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #FFFFFF;
+    text-align: left;
+}
+
+p{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    color: #E0E0E0;
+    text-align: left;
+}
+
+span{
+    font-size: 14px;
+    font-weight: 300;
+    color: #00BFFF;
+    text-align: left;
+}
+
