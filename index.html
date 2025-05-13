@@ -2,39 +2,40 @@
 <html lang="pt-BR">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome para ícones de clima -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Estilos personalizados -->
     <link rel="stylesheet" href="style.css">
-    <title>Previsão Do Tempo</title>
-
-
+    <title>Previsão do Tempo</title>
 </head>
 
 <body>
-
     <div class="container">
-
         <div class="input-container">
-            <input type="text" id="cidade-input" placeholder="Digite o nome da cidade">
-            <button class="buscar-btn" onclick="buscarPrevisao()">
+            <!-- Campo de entrada para o nome da cidade -->
+            <input type="text" id="cidade-input" placeholder="Digite o nome da cidade" aria-label="Cidade">
+            <!-- Botão para buscar a previsão -->
+            <button class="buscar-btn" id="buscar-btn" aria-label="Buscar previsão do tempo">
                 <i class="fas fa-search"></i>
             </button>
-
         </div>
 
-        <div class="card">
+        <h1>Previsão do Tempo</h1>
 
-            <h1 >Previsão Do Tempo</h1>
-            <h2 id="cidade"></h2>
-
-            
+        <div class="card" style="display: none;">
+            <!-- Elementos que serão atualizados pelo JS -->
+            <h2 id="cidade">-</h2>
+            <p>Temperatura: <span id="temperatura">-</span>°C</p>
+            <p>Umidade: <span id="umidade">-</span>%</p>
+            <p>Condição: <span id="condicao">-</span></p>
+            <p>Vento: <span id="vento">-</span> km/h</p>
         </div>
-
     </div>
-</body>
 
-<script src="script.js"></script>
+    <!-- Script principal -->
+    <script src="script.js"></script>
+</body>
 
 </html>
