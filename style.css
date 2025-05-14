@@ -40,14 +40,29 @@ body {
     text-align: left;
 }
 
-/* Área de busca */
+/* Card de informações do clima com animação de expansão */
+.card {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 2s cubic-bezier(.4,2,.6,1), opacity 1.5s;
+}
+
+/* Card expandido (aparece com animação) */
+.card.expandir {
+    max-height: 500px; /* ajuste conforme necessário */
+    opacity: 1;
+    overflow: visible;
+}
+
+/* Área de busca (input + botão) */
 .input-container {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
 }
 
-/* Campo de texto */
+/* Campo de texto para cidade */
 #cidade-input {
     height: 40px;
     width: 250px;
@@ -134,8 +149,24 @@ span {
     color: #00BFFF;
 }
 
-/* Ícones do clima (cor padrão do Font Awesome) */
-.fas {
-    /* Não define cor fixa para manter a cor original dos ícones */
+/* Linha de condição: ícone + texto alinhados */
+#linha-condicao {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Condição: ícone + texto */
+#condicao {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Ícone do clima */
+.icone-clima {
+    width: 32px;
+    height: 32px;
+    margin: 0;
 }
 

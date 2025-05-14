@@ -1,67 +1,79 @@
-const apikey  = "ed37d797";
+const apikey = "ed37d797";
 
-document.querySelector('.card').style.display = "none";
+// Ao carregar a página, garante que a card está recolhida (sem animação de expansão)
+document.querySelector('.card').classList.remove("expandir");
 
-async function buscarPrevisao(){
+/**
+ * Função principal para buscar a previsão do tempo na API HG Brasil
+ */
+async function buscarPrevisao() {
+    // Obtém o valor digitado no input e remove espaços extras
     const city = document.getElementById("cidade-input").value.trim().toLowerCase();
-    if(!city){
+
+    // Esconde a card antes de buscar (remove a classe de expansão)
+    document.querySelector('.card').classList.remove("expandir");
+
+    // Se o campo estiver vazio, alerta o usuário e interrompe a função
+    if (!city) {
         alert("Digite uma cidade!");
         return;
     }
 
+    // Monta a URL da API com a chave e cidade
     const url = `https://api.hgbrasil.com/weather?key=${apikey}&city_name=${encodeURIComponent(city)}&format=json-cors`;
-    try{
+
+    try {
+        // Faz a requisição para a API
         const response = await fetch(url);
         const dados = await response.json();
 
-        if(dados && dados.results){
+        // Se a resposta for válida e contiver resultados
+        if (dados && dados.results) {
             const previsao = dados.results;
 
-            // Determina o ícone de acordo com a condição
-            let icon = "";
-            const cond = previsao.description.toLowerCase();
-            if(cond.includes("sol")) {
-                icon = '<i class="fas fa-sun"></i>';
-            }else if(cond.includes("chuva")) {
-                icon = '<i class="fas fa-cloud-showers-heavy"></i>';
-            }else if (cond.includes("nublado")) {
-                icon = '<i class="fas fa-cloud"></i>';
-            }else if (cond.includes("tempestade")) {
-                icon = '<i class="fas fa-bolt"></i>';
-            }else {
-                icon = '<i class="fas fa-smog"></i>';
-            }
+            // Usa o campo condition_slug para montar a URL da imagem do clima
+            const slug = previsao.condition_slug;
+            const iconUrl = `https://assets.hgbrasil.com/weather/icons/conditions/${slug}.svg`;
 
-            document.getElementById("cidade").innerText = previsao.city_name || "-";
+            // Atualiza os elementos da tela com os dados recebidos
+            document.getElementById("cidade").innerText = capitalizar(previsao.city_name) || "-";
             document.getElementById("temperatura").innerText = previsao.temp || "-";
             document.getElementById("umidade").innerText = previsao.humidity || "-";
-            document.getElementById("condicao").innerHTML = `${icon} ${previsao.description || "-"}`;
+            document.getElementById("condicao").innerHTML = `<img src="${iconUrl}" alt="${previsao.description}" class="icone-clima"> ${previsao.description || "-"}`;
             document.getElementById("vento").innerText = previsao.wind_speedy || "-";
 
-            document.querySelector('.card').style.display = "block";
+            // Mostra a card com animação de expansão
+            document.querySelector('.card').classList.add("expandir");
 
-            document.getElementById('cidade-input').value = ""; // Limpa o campo de entrada
+            // Limpa o campo de entrada após busca bem-sucedida
+            document.getElementById('cidade-input').value = "";
 
-        }else{
+        } else {
+            // Caso não encontre a cidade, alerta o usuário
             alert("Não foi possível obter os dados da cidade informada.");
         }
 
-    }catch(error){
+    } catch (error) {
+        // Em caso de erro na requisição, alerta o usuário
         alert("Erro ao buscar os dados da API.");
         console.log(error);
     }
 }
 
-
+/**
+ * Função para capitalizar o nome da cidade
+ * Exemplo: "são paulo" -> "São Paulo"
+ */
 function capitalizar(str) {
     return str.replace(/\b\w/g, l => l.toUpperCase());
 }
 
-// Adicione este trecho FORA da função buscarPrevisao:
-document.getElementById("cidade-input").addEventListener("keyup", function(event) {
+// Permite buscar ao pressionar Enter no campo de texto
+document.getElementById("cidade-input").addEventListener("keyup", function (event) {
     if (event.key === "Enter") {
         buscarPrevisao();
     }
 });
 
+// Permite buscar ao clicar no botão de busca
 document.getElementById("buscar-btn").addEventListener("click", buscarPrevisao);

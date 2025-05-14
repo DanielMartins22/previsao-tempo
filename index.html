@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Font Awesome para ícones de clima -->
+    <!-- Font Awesome para ícones extras (opcional) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Estilos personalizados -->
     <link rel="stylesheet" href="style.css">
@@ -13,6 +13,7 @@
 
 <body>
     <div class="container">
+        <h1>Previsão do Tempo</h1>
         <div class="input-container">
             <!-- Campo de entrada para o nome da cidade -->
             <input type="text" id="cidade-input" placeholder="Digite o nome da cidade" aria-label="Cidade">
@@ -22,14 +23,13 @@
             </button>
         </div>
 
-        <h1>Previsão do Tempo</h1>
-
-        <div class="card" style="display: none;">
+        <div class="card">
             <!-- Elementos que serão atualizados pelo JS -->
             <h2 id="cidade">-</h2>
             <p>Temperatura: <span id="temperatura">-</span>°C</p>
             <p>Umidade: <span id="umidade">-</span>%</p>
-            <p>Condição: <span id="condicao">-</span></p>
+            <!-- Linha de condição com ícone e texto alinhados -->
+            <p id="linha-condicao">Condição: <span id="condicao">-</span></p>
             <p>Vento: <span id="vento">-</span> km/h</p>
         </div>
     </div>
