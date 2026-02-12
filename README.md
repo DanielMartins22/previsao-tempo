@@ -22,6 +22,8 @@ Previsão do Tempo - Screenshot
 🔌 Integração com HG Weather API
 Este projeto utiliza a HG Weather API para obter dados meteorológicos atualizados.
 
+🔗 Link do Projeto: [Visite aqui](https://danielmartins22.github.io/previsao-tempo/)
+
 🏗️ Próximas Etapas
 🔹 Implementação do JavaScript para buscar dados meteorológicos.
 🔹 Configuração da API para obter informações em tempo real.
